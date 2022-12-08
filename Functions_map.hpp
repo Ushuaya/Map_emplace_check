@@ -52,16 +52,16 @@ std::size_t map_emplace_hint_begin() {
 }
 
 // inserting to the random pos
-std::size_t map_emplace_hint_random() {
+std::size_t map_emplace_hint_middle() {
     std::map<int, std::string> map;
+    map.insert({0, "BOBOBO"});
     auto it = map.begin();
     uint tmp = ITER_QUANTITY;
     uint pos;
-    for (int i = 0; i < tmp; ++i) {
-        pos = rand() % map.size();
-        std::advance(it, pos);
+    for (int i = 1; i < tmp; ++i) {
         map.emplace_hint(it, i, "BOBOBO" + std::to_string(i));
-        it = map.begin();
+        if (i%2 == 0)
+            it++;
     }
     return map.size();
 }

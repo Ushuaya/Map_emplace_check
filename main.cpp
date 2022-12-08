@@ -18,6 +18,8 @@ void test_together(){
     myfile << "Insert  Hint  Begin  Random" << std::endl;
     
     for(int i = 0; i < 60; i++ ){
+        std::cout << "Iteration №" << i << std::endl;
+        
         auto start = std::chrono::system_clock::now();
         map_insert();
         auto end = std::chrono::system_clock::now();
@@ -37,7 +39,7 @@ void test_together(){
         myfile << std::to_string((end - start).count()) << " ";
         
         start = std::chrono::system_clock::now();
-        map_emplace_hint_begin();
+        map_emplace_hint_middle();
         end = std::chrono::system_clock::now();
         //std::cout << "Random: " << (end - start).count() << std::endl;
         myfile << std::to_string((end - start).count()) << " " << std::endl;;
@@ -46,9 +48,8 @@ void test_together(){
 }
 int main() {
     
-    
     test_together();
-    
+
     
     auto start = std::chrono::system_clock::now();
     // Comment function above and write function under for independent test:
